@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tự Đánh Giá Nhân Sự 2026</title>
+<title>Đánh Giá Nhân Sự 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -284,7 +284,7 @@ body{font-family:var(--font);background:#daeced;color:var(--ink);min-height:100v
     <div class="tb-brand">
       <div class="tb-logo">📋</div>
       <div>
-        <div class="tb-name">Tự Đánh Giá Nhân Sự</div>
+        <div class="tb-name">Đánh Giá Nhân Sự</div>
         <div class="tb-sub">HỆ THỐNG LƯƠNG 3P · 2026</div>
       </div>
     </div>
@@ -310,19 +310,35 @@ body{font-family:var(--font);background:#daeced;color:var(--ink);min-height:100v
   <div class="pg-header">
     <div class="pg-left">
       <div class="pg-step">Bước 1 / 5</div>
-      <div class="pg-title">Thông Tin Cá Nhân</div>
+      <div class="pg-title">Thông Tin Người Đánh Giá</div>
       <div class="pg-sub">Điền đầy đủ thông tin trước khi bắt đầu</div>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
-      <div class="sec-head light" style="margin-bottom:18px"><span class="sh-ico">👤</span><span class="sec-head-txt">Thông Tin Cá Nhân</span></div>
+      <div class="sec-head light" style="margin-bottom:18px"><span class="sh-ico">👤</span><span class="sec-head-txt">Thông Tin Leader</span></div>
       <div class="g2">
         <div class="field"><label class="lbl">Họ và tên <span class="req">*</span></label><input class="inp" id="inp-leader" placeholder="Tên của bạn…"/></div>
         <div class="field"><label class="lbl">Tên Team / BU <span class="req">*</span></label><input class="inp" id="inp-team" placeholder="VD: Team Alpha…"/></div>
       </div>
       <div class="field" style="max-width:220px"><label class="lbl">Tháng đánh giá <span class="req">*</span></label><input class="inp" id="inp-month" type="month"/></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="sec-head" style="margin-bottom:18px"><span class="sh-ico">🎯</span><span class="sec-head-txt">Đối Tượng Đánh Giá</span></div>
+      <div class="field">
+        <label class="lbl">Loại đánh giá <span class="req">*</span></label>
+        <div class="tog-wrap" style="max-width:440px">
+          <button class="tog on" id="tgl-self" onclick="setTarget('self')">👤 Tự đánh giá bản thân</button>
+          <button class="tog" id="tgl-member" onclick="setTarget('member')">👥 Đánh giá nhân sự trong team</button>
+        </div>
+      </div>
+      <div id="member-fields" style="display:none">
+        <div class="field"><label class="lbl">Họ và tên nhân sự <span class="req">*</span></label><input class="inp" id="inp-member" placeholder="Tên nhân sự được đánh giá…" style="max-width:340px"/></div>
+      </div>
     </div>
   </div>
 
@@ -334,12 +350,12 @@ body{font-family:var(--font);background:#daeced;color:var(--ink);min-height:100v
   <div class="pg-header">
     <div class="pg-left">
       <div class="pg-step">Bước 2 / 5</div>
-      <div class="pg-title">Tự Xác Định Level Của Bạn</div>
-      <div class="pg-sub">Chọn "Đạt" ở level bạn tự đánh giá · Kết quả sẽ được Leader review</div>
+      <div class="pg-title">Khung Level Vị Trí Seller</div>
+      <div class="pg-sub">Chỉ chọn "ĐẠT" ở đúng 1 level bạn xác định · Không hiển thị lương</div>
     </div>
   </div>
 
-  <div class="note amber"><span class="note-ico">📌</span><div><strong>Nguyên tắc xếp level:</strong> Chỉ chọn <strong>"ĐẠT"</strong> ở level bạn tự xác định cho mình. Seller có level thấp nhất ở tiêu chí nào thì được xếp vào level đó. Kết quả sẽ được Leader review và L5 duyệt cuối.</div></div>
+  <div class="note amber"><span class="note-ico">📌</span><div><strong>Nguyên tắc xếp level:</strong> Chỉ chọn <strong>"ĐẠT"</strong> ở level bạn xác định cho nhân sự. Seller có level thấp nhất ở tiêu chí nào thì được xếp vào level đó.</div></div>
 
   <div class="card">
     <div class="card-body" style="padding:0">
@@ -408,7 +424,7 @@ body{font-family:var(--font);background:#daeced;color:var(--ink);min-height:100v
     </div>
   </div>
 
-  <div class="note navy"><span class="note-ico">ℹ️</span><div>Chấm điểm <strong>trung thực</strong> – kết quả sẽ được Leader review và L5 duyệt cuối. Chọn mức điểm phản ánh đúng năng lực thực tế của bạn.</div></div>
+  <div class="note navy" id="nl7-note"><span class="note-ico">⚠️</span><div><strong>Lưu ý:</strong> Nhóm 7 – Năng lực quản trị &amp; tư duy chiến lược <strong>chỉ hiển thị khi tự đánh giá bản thân</strong>. Khi đánh giá nhân sự trong team, mục này sẽ không hiển thị.</div></div>
 
   <div class="card">
     <div class="card-body">
@@ -437,6 +453,7 @@ body{font-family:var(--font);background:#daeced;color:var(--ink);min-height:100v
             <tr><td>Nhóm 4 – Kiểm soát rủi ro &amp; sự cố</td><td>15%</td><td>15%</td><td>15%</td><td>15%</td><td>15%</td></tr>
             <tr><td>Nhóm 5 – Vận hành &amp; hệ thống hóa</td><td>5%</td><td>10%</td><td class="hot">20% 🔥</td><td>20%</td><td>20%</td></tr>
             <tr><td>Nhóm 6 – AI &amp; Automation</td><td>20%</td><td class="hot">25% 🔥</td><td>20%</td><td>15%</td><td>15%</td></tr>
+            <tr><td>Nhóm 7 – Quản trị &amp; chiến lược</td><td class="na">0%</td><td class="na">0%</td><td>10%</td><td class="hot">25% 🔥</td><td class="hot">30% 🔥</td></tr>
             <tr class="focus-row"><td>Trọng tâm</td><td>Sản phẩm & nền tảng</td><td>AI & hệ thống hóa</td><td>Hệ thống vận hành</td><td>Quản trị & chiến lược</td><td>Điều hành & P&L</td></tr>
           </tbody>
         </table>
@@ -477,7 +494,7 @@ body{font-family:var(--font);background:#daeced;color:var(--ink);min-height:100v
   <!-- Print header -->
   <div class="print-header" style="align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid var(--navy)">
     <div>
-      <div style="font-family:var(--font);font-size:22px;font-weight:800;color:var(--navy);">Phiếu Tự Đánh Giá Nhân Sự 2026</div>
+      <div style="font-family:var(--font);font-size:22px;font-weight:800;color:var(--navy);;">Phiếu Đánh Giá Nhân Sự 2026</div>
       <div style="font-size:11px;color:var(--ink-3);margin-top:2px">Hệ thống lương 3P – Đánh giá P1 &amp; P2 Seller</div>
     </div>
     <div style="text-align:right;font-size:11px;color:var(--ink-3)">
@@ -564,11 +581,12 @@ const NL=[
   {num:4,name:'Năng lực kiểm soát rủi ro & xử lý sự cố',muctieu:'Bảo vệ tài sản và lợi nhuận',color:'#d97706',bg:'#fef3c7',noidung:'Xử lý vi phạm policy, giải quyết cảnh báo tài khoản • Làm việc với support, appeal thành công • Xử lý khiếu nại của khách hàng • Dự báo rủi ro vận hành (hold balance), quản trị tài khoản dài hạn',applies:'L1→L5'},
   {num:5,name:'Năng lực vận hành & hệ thống hóa',muctieu:'Tạo khả năng scale',color:'#dc2626',bg:'#fee2e2',noidung:'Xây dựng quy trình chuẩn (SOP) • Onboarding & training nhân sự mới • Giao việc và quản lý team (Seller, Designer, CS, Fulfillment, Content, Ads) • Tối ưu quy trình, giảm phụ thuộc vào cá nhân',applies:'L1→L5'},
   {num:6,name:'Năng lực AI & Automation',muctieu:'Tăng hiệu suất bằng công nghệ',color:'#0d9488',bg:'#ccfbf1',noidung:'Sử dụng AI để research/idea • Ứng dụng AI trong creative (image, video), ads, customer support • Automation workflow • Hiểu agentic commerce (UCP, AI buyer…)',applies:'L1→L5'},
+  {num:7,name:'Năng lực quản trị & tư duy chiến lược',muctieu:'Điều hành business',color:'#be123c',bg:'#fce7f3',noidung:'Lập kế hoạch tài chính, ngân sách quảng cáo, kiểm soát P&L • Đàm phán: nhà cung cấp, đối tác, agency • Nhận diện xu hướng global eCom: AI, Omnichannel, Brand • Tư duy tài chính cao cấp (đầu tư, gọi vốn), xây dựng đội ngũ kế thừa',applies:'L3→L5'},
 ];
 const SCORE_LABELS=['','Biết','Làm được','Tốt','Rất tốt','Chuyên gia'];
 
 let curStep=1,targetType='self',selLevel='',selBac='';
-let p2Scores=[0,0,0,0,0,0];
+let p2Scores=[0,0,0,0,0,0,0];
 
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('inp-month').value=new Date().toISOString().slice(0,7);
@@ -590,14 +608,19 @@ function buildNLContainer(){
   const c=document.getElementById('nl-container');c.innerHTML='';
   NL.forEach((nl,i)=>{
     const btns=[1,2,3,4,5].map(s=>`<div class="sc-btn s${s}" id="sb-${i}-${s}" onclick="setScore(${i},${s})"><input type="radio" name="nl-${i}" value="${s}"><span class="sc-num">${s}</span><span class="sc-txt">${SCORE_LABELS[s]}</span></div>`).join('');
-    c.innerHTML+=`<div class="nl-item" id="nl-item-${i}"><div class="nl-head"><div class="nl-num" style="background:${nl.bg};color:${nl.color}">${nl.num}</div><div style="flex:1"><div class="nl-title">${nl.name}<span class="nl-applies">• ${nl.applies}</span></div><div class="nl-muc">${nl.muctieu}</div><div class="nl-body">${nl.noidung.replace(/•/g,'·')}</div></div></div><div class="score-row" id="sr-${i}">${btns}</div></div>`;
+    const isN7=nl.num===7;
+    c.innerHTML+=`<div class="nl-item" id="nl-item-${i}"><div class="nl-head"><div class="nl-num" style="background:${nl.bg};color:${nl.color}">${nl.num}</div><div style="flex:1"><div class="nl-title">${nl.name}<span class="nl-applies">• ${nl.applies}</span></div><div class="nl-muc">${nl.muctieu}</div><div class="nl-body">${nl.noidung.replace(/•/g,'·')}</div></div></div><div class="score-row" id="sr-${i}">${btns}</div>${isN7?'<div class="nl-na" id="na-'+i+'">⚠ Chỉ áp dụng khi tự đánh giá bản thân</div>':''}</div>`;
   });
 }
 
 function setScore(idx,s){p2Scores[idx]=s;for(let j=1;j<=5;j++){const b=document.getElementById('sb-'+idx+'-'+j);if(b)b.classList.toggle('on',j===s)}}
 
 function updateNLDisabled(){
-  // Nhân sự: không có nhóm 7, không cần disable logic
+  const n7=document.getElementById('nl-item-6'),note=document.getElementById('nl7-note');
+  if(!n7)return;
+  const self=targetType==='self';
+  if(self){n7.style.display='';const sr=document.getElementById('sr-6'),na=document.getElementById('na-6');if(sr){sr.style.opacity='1';sr.style.pointerEvents=''}if(na)na.style.display='none';if(note)note.style.display='flex';}
+  else{n7.style.display='none';if(note)note.style.display='none';p2Scores[6]=0;for(let s=1;s<=5;s++){const b=document.getElementById('sb-6-'+s);if(b)b.classList.remove('on')}}
 }
 
 function goStep(n){
@@ -608,7 +631,13 @@ function goStep(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function setTarget(t){ targetType='self'; } // Nhân sự luôn tự đánh giá
+function setTarget(t){
+  targetType=t;
+  document.getElementById('tgl-self').classList.toggle('on',t==='self');
+  document.getElementById('tgl-member').classList.toggle('on',t==='member');
+  document.getElementById('member-fields').style.display=t==='member'?'block':'none';
+  updateNLDisabled();
+}
 
 function selectBac(bac,el){
   selBac=bac;
@@ -625,13 +654,13 @@ function calcAndGoResult(){
   const PCLS=['p0','p1','p2','p3','p4','p5'];
   NL.forEach((nl,i)=>{
     const sc=p2Scores[i]||0,wt=w[i];
-    const na=wt===0;
+    const na=(nl.num===7&&targetType!=='self')||wt===0;
     const qd=!na&&sc>0?sc*wt/100:0;total+=qd;
     tbody.innerHTML+=`<tr><td><span style="color:${nl.color};font-weight:700">Nhóm ${nl.num}</span> – ${nl.name}</td><td style="text-align:center">${na?'<span class="pill p0">N/A</span>':sc?'<span class="pill '+PCLS[sc]+'">'+sc+' – '+SCORE_LABELS[sc]+'</span>':'<span class="pill p0">–</span>'}</td><td style="text-align:center;font-family:monospace;font-size:11px;color:var(--ink-3)">${na?'–':wt+'%'}</td><td style="text-align:right;font-family:monospace;font-size:12px;color:var(--navy);font-weight:700">${na?'–':sc?qd.toFixed(2):'0.00'}</td></tr>`;
   });
   const p2lv=getP2Level(total);
   tfoot.innerHTML=`<tr class="tot-row"><td colspan="3" style="font-family:var(--font);font-size:14px;">🏁 TỔNG ĐIỂM P2 → <strong style="color:${p2lv.color}">${p2lv.code} – ${p2lv.ten.toUpperCase()}</strong></td><td style="text-align:right;font-family:var(--font);font-size:20px;font-weight:800;color:var(--navy)">${total.toFixed(2)}</td></tr>`;
-  const name=document.getElementById('inp-leader').value||'Bản thân';
+  const name=targetType==='member'?(document.getElementById('inp-member').value||'Nhân sự'):(document.getElementById('inp-leader').value||'Bản thân');
   document.getElementById('res-subtitle').textContent=name+' · '+selLevel+' '+selBac+' · P2: '+total.toFixed(2)+' · '+p2lv.code+' '+p2lv.ten;
   document.getElementById('res-lv').textContent=selLevel;document.getElementById('res-lv-name').textContent=LEVEL_NAMES[selLevel]||'';
   document.getElementById('res-bac').textContent=selBac;document.getElementById('res-bac-desc').textContent=BAC_DESCS[selBac]||'';
@@ -656,12 +685,12 @@ function doPrint(){
 
 function exportCSV(){
   const leader=document.getElementById('inp-leader').value||'',team=document.getElementById('inp-team').value||'',month=document.getElementById('inp-month').value||'';
-  const loai='Tự đánh giá cá nhân';
-  const name=leader;
+  const loai=targetType==='self'?'Tự đánh giá bản thân':'Đánh giá nhân sự trong team';
+  const name=targetType==='member'?(document.getElementById('inp-member').value||''):leader;
   const w=WEIGHTS[selLevel]||WEIGHTS['L1'];let total=0;const scoreRows=[];
   NL.forEach((nl,i)=>{
     const sc=p2Scores[i]||0,wt=w[i];
-    const na=wt===0;
+    const na=(nl.num===7&&targetType!=='self')||wt===0;
     const qd=!na&&sc>0?parseFloat((sc*wt/100).toFixed(2)):0;total+=qd;
     scoreRows.push({nhom:'Nhóm '+nl.num+' – '+nl.name,diem:na?'N/A':(sc||'–'),muc:na?'N/A':(SCORE_LABELS[sc]||'–'),ws:na?'–':wt+'%',qd:na?'–':(sc?qd.toFixed(2):'0.00')});
   });
